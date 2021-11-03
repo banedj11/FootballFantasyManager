@@ -1,8 +1,6 @@
 package com.bane.footballfantasymanager.domain;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,6 +11,8 @@ import javax.validation.constraints.Size;
 @Data
 @ToString
 @EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
 public class Authority {
 
     @NotNull
