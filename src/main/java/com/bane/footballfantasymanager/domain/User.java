@@ -41,7 +41,6 @@ public class User extends AbstractAuditingEntity{
     private String email;
 
     @Size (min = 4, max = 100)
-    @JsonIgnore
     @NotNull
     private String password;
 
