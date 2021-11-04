@@ -21,7 +21,7 @@ import java.util.Set;
 @ToString
 @EqualsAndHashCode
 @Data
-public class User {
+public class User extends AbstractAuditingEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,6 +43,8 @@ public class User {
     private String email;
 
     @Size (min = 4, max = 100)
+    @JsonIgnore
+    @NotNull
     private String password;
 
     private Boolean isActive;
@@ -55,8 +57,7 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
     private Set<Authority> authorities = new HashSet<>();
 
-    public User(Long id, String firstName, String lastName, String email,  String password, Boolean isActive) {
-        this.id = id;
+    public User(String firstName, String lastName, String email,  String password, Boolean isActive) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

@@ -19,9 +19,11 @@ import java.util.Set;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
@@ -46,8 +48,8 @@ public class UserServiceImpl implements UserService {
         authorities.add(authority);
         user.setAuthorities(authorities);
 
-//        String encryptedPassword = bCryptPasswordEncoder.encode(user.getPassword());
-//        user.setPassword(encryptedPassword);
+        String encryptedPassword = bCryptPasswordEncoder.encode(user.getPassword());
+        user.setPassword(encryptedPassword);
         return userRepository.save(user);
     }
 
