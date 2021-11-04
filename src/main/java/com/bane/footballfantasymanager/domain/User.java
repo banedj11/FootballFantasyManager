@@ -4,8 +4,6 @@ package com.bane.footballfantasymanager.domain;
 import com.bane.footballfantasymanager.config.Constants;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -48,6 +46,9 @@ public class User extends AbstractAuditingEntity{
     private String password;
 
     private Boolean isActive;
+
+    @ManyToOne(fetch = FetchType.LAZY ,cascade = CascadeType.ALL)
+    private Country country;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
