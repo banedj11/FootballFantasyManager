@@ -3,33 +3,33 @@ package com.bane.footballfantasymanager.domain;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @ToString
 @EqualsAndHashCode
 @Data
-public class UsersTeam {
+public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 3, max = 70)
-    private String name;
+    private String firstName;
+
+    private String lastName;
+
+    private Double price;
 
     private Integer overallPoints;
 
     private Integer gameweekPoints;
 
-    private Long overallRank;
+    private boolean captain = false;
 
-    private Double budget;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Team team;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    private User user;
+
 
 
 }
