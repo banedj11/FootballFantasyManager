@@ -4,10 +4,12 @@ import com.bane.footballfantasymanager.domain.UsersTeam;
 import com.bane.footballfantasymanager.repository.UsersTeamRepository;
 import com.bane.footballfantasymanager.service.UsersTeamService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class UsersTeamServiceImpl implements UsersTeamService {
 
     private final UsersTeamRepository usersTeamRepository;
