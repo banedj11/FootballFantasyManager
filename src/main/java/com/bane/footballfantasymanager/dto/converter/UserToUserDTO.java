@@ -3,8 +3,10 @@ package com.bane.footballfantasymanager.dto.converter;
 import com.bane.footballfantasymanager.domain.User;
 import com.bane.footballfantasymanager.dto.UserDTO;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+@Component
 public class UserToUserDTO implements Converter<User, UserDTO> {
 
     @Transactional
