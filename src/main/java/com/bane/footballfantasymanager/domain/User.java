@@ -1,7 +1,7 @@
 package com.bane.footballfantasymanager.domain;
 
 
-import com.bane.footballfantasymanager.config.Constants;
+import com.bane.footballfantasymanager.constants.Constants;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
@@ -35,7 +35,7 @@ public class User extends AbstractAuditingEntity{
 
     @Email
     @NotNull
-    @Pattern(regexp = Constants.LOGIN_REGEX)
+    @Pattern(regexp = Constants.EMAIL_REGEX)
     @Column(unique = true)
     @Size(min = 5, max = 100)
     private String email;

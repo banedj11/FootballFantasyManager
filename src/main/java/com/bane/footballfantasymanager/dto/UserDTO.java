@@ -1,6 +1,6 @@
 package com.bane.footballfantasymanager.dto;
 
-import com.bane.footballfantasymanager.config.Constants;
+import com.bane.footballfantasymanager.constants.Constants;
 import com.bane.footballfantasymanager.domain.Country;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +21,7 @@ public class UserDTO {
     private String lastName;
 
     @Email
-    @Pattern(regexp = Constants.LOGIN_REGEX)
+    @Pattern(regexp = Constants.EMAIL_REGEX)
     private String email;
 
     private Country country;

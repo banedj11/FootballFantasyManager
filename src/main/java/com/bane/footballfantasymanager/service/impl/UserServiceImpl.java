@@ -1,6 +1,7 @@
 package com.bane.footballfantasymanager.service.impl;
 
-import com.bane.footballfantasymanager.config.Constants;
+import com.bane.footballfantasymanager.constants.Constants;
+import com.bane.footballfantasymanager.constants.RoleConstants;
 import com.bane.footballfantasymanager.domain.Authority;
 import com.bane.footballfantasymanager.domain.User;
 import com.bane.footballfantasymanager.repository.UserRepository;
@@ -16,7 +17,7 @@ import java.util.Set;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -44,7 +45,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User registerUser(User user) {
         Set<Authority> authorities = user.getAuthorities();
-        Authority authority = new Authority(Constants.USER);
+        Authority authority = new Authority(RoleConstants.USER);
         authorities.add(authority);
         user.setAuthorities(authorities);
 

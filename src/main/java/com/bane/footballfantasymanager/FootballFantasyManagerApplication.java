@@ -1,6 +1,7 @@
 package com.bane.footballfantasymanager;
 
-import com.bane.footballfantasymanager.config.Constants;
+import com.bane.footballfantasymanager.constants.Constants;
+import com.bane.footballfantasymanager.constants.RoleConstants;
 import com.bane.footballfantasymanager.domain.Authority;
 import com.bane.footballfantasymanager.domain.User;
 import com.bane.footballfantasymanager.repository.AuthorityRepository;
@@ -10,12 +11,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @SpringBootApplication
 public class FootballFantasyManagerApplication {
@@ -29,8 +26,8 @@ public class FootballFantasyManagerApplication {
 	@PostConstruct
 	public void initUsers() {
 		Set<Authority> authorities = new HashSet<>();
-		Authority authority1 = new Authority(Constants.USER);
-		Authority authority2 = new Authority(Constants.ADMIN);
+		Authority authority1 = new Authority(RoleConstants.USER);
+		Authority authority2 = new Authority(RoleConstants.ADMIN);
 		authorities.add(authority1);
 		authorities.add(authority2);
 		authorityRepository.saveAll(authorities);
