@@ -2,6 +2,7 @@ package com.bane.footballfantasymanager.resource;
 
 import com.bane.footballfantasymanager.domain.User;
 import com.bane.footballfantasymanager.dto.UserDTO;
+import com.bane.footballfantasymanager.errors.UserNotFoundException;
 import com.bane.footballfantasymanager.service.UserService;
 import org.apache.tomcat.util.http.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;

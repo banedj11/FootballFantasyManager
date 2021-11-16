@@ -4,6 +4,7 @@ import com.bane.footballfantasymanager.constants.Constants;
 import com.bane.footballfantasymanager.constants.RoleConstants;
 import com.bane.footballfantasymanager.domain.Authority;
 import com.bane.footballfantasymanager.domain.User;
+import com.bane.footballfantasymanager.errors.UserNotFoundException;
 import com.bane.footballfantasymanager.repository.UserRepository;
 import com.bane.footballfantasymanager.service.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,8 +29,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User findByID(Long id) {
-        return userRepository.findById(id).get();
+    public Optional<User> findByID(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        if(!user.isPresent()) {
+            throw new UserNotFoundException("User with id: " + id + " doesn't exist");
+        }
+        return user;
     }
 
     @Override
