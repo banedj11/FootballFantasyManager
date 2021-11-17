@@ -36,8 +36,8 @@ public class UserResource {
 
     @PostMapping("/users")
     @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
-    public ResponseEntity<User> createUser(@Valid @RequestBody User user) throws URISyntaxException {
-        User newUser = userService.registerUser(user);
+    public ResponseEntity<UserDTO> createUser(@Valid @RequestBody User user) throws URISyntaxException {
+        UserDTO newUser = conversionService.convert(userService.registerUser(user), UserDTO.class);
         return ResponseEntity.created(new URI("/api/users/" + newUser.getEmail())).body(newUser);
     }
 
