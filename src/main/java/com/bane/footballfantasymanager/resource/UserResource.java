@@ -4,6 +4,8 @@ import com.bane.footballfantasymanager.domain.User;
 import com.bane.footballfantasymanager.dto.UserDTO;
 import com.bane.footballfantasymanager.errors.UserNotFoundException;
 import com.bane.footballfantasymanager.service.UserService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Authorization;
 import org.apache.tomcat.util.http.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,8 +19,10 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping("/api")
 public class UserResource {
 
     private final UserService userService;
@@ -31,17 +35,21 @@ public class UserResource {
     }
 
     @PostMapping("/users")
+    @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
     public ResponseEntity<User> createUser(@Valid @RequestBody User user) throws URISyntaxException {
         User newUser = userService.registerUser(user);
         return ResponseEntity.created(new URI("/api/users/" + newUser.getEmail())).body(newUser);
     }
 
     @GetMapping("/users")
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
+    public ResponseEntity<List<UserDTO>> getAllUsers() {
+        List<UserDTO> users = userService.getAllUsers().stream().map(u -> conversionService.convert(u, UserDTO.class)).collect(Collectors.toList());
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping("/users/{id}")
+    @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
     public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
         UserDTO user = conversionService.convert(userService.findByID(id), UserDTO.class);
         return new ResponseEntity<>(user, HttpStatus.OK);

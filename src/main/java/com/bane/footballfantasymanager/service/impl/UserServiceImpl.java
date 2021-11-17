@@ -29,12 +29,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Optional<User> findByID(Long id) {
+    public User findByID(Long id) {
         Optional<User> user = userRepository.findById(id);
         if(!user.isPresent()) {
             throw new UserNotFoundException("User with id: " + id + " doesn't exist");
         }
-        return user;
+        return user.get();
     }
 
     @Override

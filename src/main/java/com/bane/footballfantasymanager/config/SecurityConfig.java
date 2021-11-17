@@ -38,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/users/").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
+                .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**","/swagger-resources/configuration/ui").permitAll()
                 .antMatchers("/authenticate")
                 .permitAll().anyRequest().authenticated()
                 .and().exceptionHandling().and().sessionManagement()
@@ -46,6 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.headers().frameOptions().disable();
     }
+
 
 //    @Bean
 //    public PasswordEncoder passwordEncoder() {
