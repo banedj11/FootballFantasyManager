@@ -24,7 +24,13 @@ public class UsersTeam {
 
     private Integer gameweekPoints;
 
+    private Integer monthlyPoints;
+
     private Long overallRank;
+
+    private Long gameweekRank;
+
+    private Long monthlyRank;
 
     private Double budget;
 
