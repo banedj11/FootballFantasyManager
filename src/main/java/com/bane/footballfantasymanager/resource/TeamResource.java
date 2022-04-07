@@ -1,8 +1,6 @@
 package com.bane.footballfantasymanager.resource;
 
-import com.bane.footballfantasymanager.domain.Player;
 import com.bane.footballfantasymanager.domain.Team;
-import com.bane.footballfantasymanager.service.PlayerService;
 import com.bane.footballfantasymanager.service.TeamService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Authorization;
@@ -10,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
