@@ -45,10 +45,10 @@ public class FootballFantasyManagerApplication {
 		countryRepository.saveAll(countries);
 
 		Set<Authority> authorities = new HashSet<>();
-		Authority authority1 = new Authority(RoleConstants.USER);
-		Authority authority2 = new Authority(RoleConstants.ADMIN);
-		authorities.add(authority1);
-		authorities.add(authority2);
+		Authority roleUser = new Authority(RoleConstants.USER);
+		Authority roleAdmin = new Authority(RoleConstants.ADMIN);
+		authorities.add(roleUser);
+		authorities.add(roleAdmin);
 		authorityRepository.saveAll(authorities);
 
 		User user = new User("Pera", "Peric", "pera@gmail.com", "12345", true);

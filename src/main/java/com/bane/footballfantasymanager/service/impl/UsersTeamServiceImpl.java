@@ -19,13 +19,8 @@ public class UsersTeamServiceImpl implements UsersTeamService {
     }
 
     @Override
-    public UsersTeam createUsersTeam(UsersTeam usersTeam) {
+    public UsersTeam save(UsersTeam usersTeam) {
         return usersTeamRepository.save(usersTeam);
-    }
-
-    @Override
-    public UsersTeam updateUsersTeam(Long id) {
-        return null;
     }
 
     @Override
@@ -36,5 +31,10 @@ public class UsersTeamServiceImpl implements UsersTeamService {
     @Override
     public List<UsersTeam> findAll() {
         return usersTeamRepository.findAll();
+    }
+
+    @Override
+    public void delete(Long id) {
+        usersTeamRepository.deleteById(id);
     }
 }

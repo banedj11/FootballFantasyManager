@@ -20,12 +20,12 @@ public class PlayerStatsTypeServiceImpl implements PlayerStatsTypeService {
     }
 
     @Override
-    public PlayerStatsType createPlayerStatsType(PlayerStatsType playerStatsType) {
+    public PlayerStatsType save(PlayerStatsType playerStatsType) {
         return playerStatsTypeRepository.save(playerStatsType);
     }
 
     @Override
-    public Optional<PlayerStatsType> findById(Long id) {
+    public Optional<PlayerStatsType> findOne(Long id) {
         return playerStatsTypeRepository.findById(id);
     }
 
@@ -35,7 +35,7 @@ public class PlayerStatsTypeServiceImpl implements PlayerStatsTypeService {
     }
 
     @Override
-    public void deletePlayerStatsType(Long id) {
+    public void delete(Long id) {
         playerStatsTypeRepository.deleteById(id);
     }
 }

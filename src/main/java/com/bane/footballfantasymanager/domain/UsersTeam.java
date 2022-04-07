@@ -28,7 +28,7 @@ public class UsersTeam {
 
     private Double budget;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
     private User user;
 
 

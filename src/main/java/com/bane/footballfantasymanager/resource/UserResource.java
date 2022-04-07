@@ -28,6 +28,7 @@ public class UserResource {
     private final UserService userService;
 
     @Autowired
+    @Lazy
     private ConversionService conversionService;
 
     public UserResource(UserService userService) {
@@ -44,14 +45,14 @@ public class UserResource {
     @GetMapping("/users")
     @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
     public ResponseEntity<List<UserDTO>> getAllUsers() {
-        List<UserDTO> users = userService.getAllUsers().stream().map(u -> conversionService.convert(u, UserDTO.class)).collect(Collectors.toList());
+        List<UserDTO> users = userService.findAll().stream().map(u -> conversionService.convert(u, UserDTO.class)).collect(Collectors.toList());
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping("/users/{id}")
     @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
     public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
-        UserDTO user = conversionService.convert(userService.findByID(id), UserDTO.class);
+        UserDTO user = conversionService.convert(userService.findOne(id), UserDTO.class);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 

@@ -7,11 +7,11 @@ import java.util.Optional;
 
 public interface TeamService {
 
-    Team createTeam(Team team);
+    Team save(Team team);
 
-    Optional<Team> findById(Long id);
+    Optional<Team> findOne(Long id);
 
     List<Team> findAll();
 
-    void deleteTeam(Long id);
+    void delete(Long id);
 }

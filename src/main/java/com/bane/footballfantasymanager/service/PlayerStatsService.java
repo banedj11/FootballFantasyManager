@@ -7,11 +7,11 @@ import java.util.Optional;
 
 public interface PlayerStatsService {
 
-    PlayerStats createPlayerStats(PlayerStats playerStats);
+    PlayerStats save(PlayerStats playerStats);
 
-    Optional<PlayerStats> findById(Long id);
+    Optional<PlayerStats> findOne(Long id);
 
     List<PlayerStats> findAll();
 
-    void deletePlayerStats(Long id);
+    void delete(Long id);
 }

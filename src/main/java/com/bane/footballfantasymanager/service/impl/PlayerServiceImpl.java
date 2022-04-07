@@ -20,12 +20,12 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public Player createPlayer(Player player) {
+    public Player save(Player player) {
         return playerRepository.save(player);
     }
 
     @Override
-    public Optional<Player> findById(Long id) {
+    public Optional<Player> findOne(Long id) {
         return playerRepository.findById(id);
     }
 
@@ -35,7 +35,7 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public void deletePlayer(Long id) {
+    public void delete(Long id) {
         playerRepository.deleteById(id);
     }
 }

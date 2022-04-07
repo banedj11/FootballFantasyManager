@@ -34,24 +34,35 @@ public class CountryResource {
     @PostMapping("/countries")
     @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
     public ResponseEntity<Country> createCountry(@RequestBody Country country) throws URISyntaxException {
-        return ResponseEntity.created(new URI("/api/countries/" + country.getId())).body(countryService.createCountry(country));
+        return ResponseEntity.created(new URI("/api/countries/" + country.getId())).body(countryService.save(country));
+    }
+
+    @PutMapping("/countries/{id}")
+    @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
+    public ResponseEntity<Country> updateCountry(@RequestBody Country country) throws URISyntaxException {
+        if(country == null) {
+            return createCountry(country);
+        }
+        countryService.save(country);
+        return new ResponseEntity<>(country, HttpStatus.OK);
     }
 
     @GetMapping("/countries")
     @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
     public ResponseEntity<List<Country>> getAllCountries() {
-        return new ResponseEntity<>(countryService.getAllCountries(), HttpStatus.OK);
+        return new ResponseEntity<>(countryService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/countries/{id}")
     @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
     public ResponseEntity<Country> getCountry(@PathVariable Long id) {
-        return new ResponseEntity<>(countryService.getCountryById(id).get(), HttpStatus.OK);
+        return new ResponseEntity<>(countryService.findOne(id).get(), HttpStatus.OK);
     }
 
     @DeleteMapping("/countries/{id}")
     @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
     public ResponseEntity<Void> deleteCountry(@PathVariable Long id) {
+        countryService.deleteCountry(id);
         return ResponseEntity.ok().build();
     }
 }

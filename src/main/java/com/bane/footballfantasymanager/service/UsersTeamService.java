@@ -6,8 +6,11 @@ import java.util.List;
 
 public interface UsersTeamService {
 
-    UsersTeam createUsersTeam(UsersTeam usersTeam);
-    UsersTeam updateUsersTeam(Long id);
+    UsersTeam save(UsersTeam usersTeam);
+
     UsersTeam getByUsersId(Long id);
+
     List<UsersTeam> findAll();
+
+    void delete(Long id);
 }

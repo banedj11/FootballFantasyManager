@@ -20,12 +20,12 @@ public class PlayerPositionServiceImpl implements PlayerPositionService {
     }
 
     @Override
-    public PlayerPosition createPlayerPosition(PlayerPosition playerPosition) {
+    public PlayerPosition save(PlayerPosition playerPosition) {
         return playerPositionRepository.save(playerPosition);
     }
 
     @Override
-    public Optional<PlayerPosition> findById(Long id) {
+    public Optional<PlayerPosition> findOne(Long id) {
         return playerPositionRepository.findById(id);
     }
 
@@ -35,7 +35,7 @@ public class PlayerPositionServiceImpl implements PlayerPositionService {
     }
 
     @Override
-    public void deletePlayerPosition(Long id) {
+    public void delete(Long id) {
         playerPositionRepository.deleteById(id);
     }
 }

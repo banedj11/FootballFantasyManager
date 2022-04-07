@@ -7,11 +7,11 @@ import java.util.Optional;
 
 public interface PlayerService {
 
-    Player createPlayer(Player player);
+    Player save(Player player);
 
-    Optional<Player> findById(Long id);
+    Optional<Player> findOne(Long id);
 
     List<Player> findAll();
 
-    void deletePlayer(Long id);
+    void delete(Long id);
 }

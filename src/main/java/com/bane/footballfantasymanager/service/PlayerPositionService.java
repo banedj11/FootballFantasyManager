@@ -8,11 +8,11 @@ import java.util.Optional;
 
 public interface PlayerPositionService {
 
-    PlayerPosition createPlayerPosition(PlayerPosition playerPosition);
+    PlayerPosition save(PlayerPosition playerPosition);
 
-    Optional<PlayerPosition> findById(Long id);
+    Optional<PlayerPosition> findOne(Long id);
 
     List<PlayerPosition> findAll();
 
-    void deletePlayerPosition(Long id);
+    void delete(Long id);
 }

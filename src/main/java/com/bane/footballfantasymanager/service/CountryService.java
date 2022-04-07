@@ -7,8 +7,8 @@ import java.util.Optional;
 
 public interface CountryService {
 
-    Country createCountry(Country country);
-    List<Country> getAllCountries();
-    Optional<Country> getCountryById(Long id);
+    Country save(Country country);
+    List<Country> findAll();
+    Optional<Country> findOne(Long id);
     void deleteCountry(Long id);
 }

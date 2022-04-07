@@ -20,12 +20,12 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public Team createTeam(Team team) {
+    public Team save(Team team) {
         return teamRepository.save(team);
     }
 
     @Override
-    public Optional<Team> findById(Long id) {
+    public Optional<Team> findOne(Long id) {
         return teamRepository.findById(id);
     }
 
@@ -35,7 +35,7 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public void deleteTeam(Long id) {
+    public void delete(Long id) {
         teamRepository.deleteById(id);
     }
 }
