@@ -30,7 +30,7 @@ public class TeamResource {
         return ResponseEntity.created(new URI("/api/players/" + newTeam.getId().toString())).body(newTeam);
     }
 
-    @PutMapping("/players")
+    @PutMapping("/teams")
     @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
     public ResponseEntity<Team> updateTeam(@RequestBody Team team) throws URISyntaxException {
         if(team.getId() == null) {
@@ -47,14 +47,14 @@ public class TeamResource {
         return new ResponseEntity<>(teams, HttpStatus.OK);
     }
 
-    @GetMapping("/teams/{id}")
+    @GetMapping("/team/{id}")
     @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
     public ResponseEntity<Team> getTeam(@PathVariable Long id) {
         Optional<Team> team = teamService.findOne(id);
         return new ResponseEntity(team, HttpStatus.OK);
     }
 
-    @DeleteMapping("/players/{id}")
+    @DeleteMapping("/team/{id}")
     @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
     public ResponseEntity<Void> deleteTeam(@PathVariable Long id) {
         teamService.delete(id);

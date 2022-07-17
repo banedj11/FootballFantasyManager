@@ -10,17 +10,15 @@ import javax.persistence.*;
 @ToString
 @EqualsAndHashCode
 @Data
-public class PlayerStats {
+public class PlayerWeeklyStats {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private Integer gameweek;
 
     private Double value;
-
-    private Integer gameweek;
 
     @ManyToOne
     private Player player;
