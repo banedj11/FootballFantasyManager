@@ -29,9 +29,6 @@ public class Player {
     @ManyToOne(fetch = FetchType.LAZY)
     private Team team;
 
-    @ManyToMany
-    private UsersTeam usersTeam;
-
     @ManyToOne(fetch = FetchType.LAZY)
     private PlayerPosition playerPosition;
 

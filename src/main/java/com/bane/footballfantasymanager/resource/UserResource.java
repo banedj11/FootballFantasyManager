@@ -2,6 +2,7 @@ package com.bane.footballfantasymanager.resource;
 
 import com.bane.footballfantasymanager.domain.User;
 import com.bane.footballfantasymanager.dto.UserDTO;
+import com.bane.footballfantasymanager.dto.UserRegisterDTO;
 import com.bane.footballfantasymanager.errors.UserNotFoundException;
 import com.bane.footballfantasymanager.service.UserService;
 import io.swagger.annotations.ApiOperation;
@@ -37,8 +38,8 @@ public class UserResource {
 
     @PostMapping("/users")
     @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
-    public ResponseEntity<UserDTO> createUser(@Valid @RequestBody User user) throws URISyntaxException {
-        UserDTO newUser = conversionService.convert(userService.registerUser(user), UserDTO.class);
+    public ResponseEntity<UserDTO> createUser(@Valid @RequestBody UserRegisterDTO user) throws URISyntaxException {
+        UserDTO newUser = userService.registerUser(user);
         return ResponseEntity.created(new URI("/api/users/" + newUser.getEmail())).body(newUser);
     }
 
